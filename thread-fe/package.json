@@ -1,5 +1,5 @@
 {
-  "name": "vite-project2",
+  "name": "thread-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "framer-motion": "^10.15.0",
+    "axios": "^1.4.0",
+    "framer-motion": "^10.15.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -28,6 +29,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "path": "^0.12.7",
+    "react-router-dom": "^6.14.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }

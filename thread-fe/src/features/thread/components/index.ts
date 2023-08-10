@@ -1,3 +1,2 @@
-export * from "./ThreadCard"
-export * from "./NavLeft"
-export * from "./NavRight"
+export * from './ThreadCard'
+export * from './ThreadDetail'

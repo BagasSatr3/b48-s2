@@ -2,6 +2,7 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 import ThreadsController from '../controllers/ThreadsController'
 import UserController from '../service/UserService'
+import AuthController from '../controllers/AuthController'
 
 const router = express.Router()
 
@@ -26,5 +27,8 @@ router.get("/user/:id", UserController.findOne)
 router.post("/user", UserController.post)
 router.put("/user/:id", UserController.update)
 router.delete("/user/:id", UserController.delete)
+
+router.get("/auth", AuthController.find)
+router.post("/auth", AuthController.post)
 
 export default router
