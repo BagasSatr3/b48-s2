@@ -31,7 +31,11 @@ class ThreadService {
 
     async post(req: Request, res: Response) {
         try {
-            const thread = await this.threadRepository.create(req.body)
+            const data = req.body
+            const thread = await this.threadRepository.create({
+                content: data.content,
+                image: data.image,
+            })
             const results = await this.threadRepository.save(thread)
             return res.send(results)
         } catch (err) {

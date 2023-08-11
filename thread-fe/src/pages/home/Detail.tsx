@@ -5,7 +5,7 @@ export function Detail() {
     return (
         <>
             <ThreadDetail/>
-            <Home/>
+            {/* <Home/> */}
         </>
     )
 }

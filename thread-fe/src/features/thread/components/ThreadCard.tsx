@@ -3,10 +3,10 @@ import {useState} from 'react'
 import {Link} from "react-router-dom"
 
 export interface User {
-  id: number,
-  author_picture: string,
-  author_full_name: string,
-  author_username: string
+  id?: number,
+  username?: string,
+  profile_picture?: string,
+  profile_description?: string
 }
 
 export interface ThreadCard {
@@ -17,8 +17,7 @@ export interface ThreadCard {
   id: number,
   // replies_count: number,
   // is_liked: boolean
-  
-  user: User
+  user?: User
 }
 
 export function ThreadCard(props: ThreadCard) {
@@ -38,11 +37,11 @@ export function ThreadCard(props: ThreadCard) {
         <Box  >
         <Box color={'white'} p={5} backgroundColor={'blackAlpha.300'}>
         <Box display={'flex'} >
-          <Image src="{props.user.author_picture}" objectFit={'cover'} rounded={'full'} w={'50px'} h={'50px'}/>
+          <Image src={props.user?.profile_picture} objectFit={'cover'} rounded={'full'} w={'50px'} h={'50px'}/>
           <Box>
             <Box display={'flex'} alignItems={'center'} flexDirection={'row'} mt={3}>
-              <Text ml={5} fontWeight={'bold'}>{props.user.author_full_name}</Text>
-              <Text ml={3}>@{props.user.author_username}</Text>
+              <Text ml={5} fontWeight={'bold'}>{props.user?.username}</Text>
+              <Text ml={3}>@{props.user?.username}</Text>
               <Text ml={3} fontWeight={'thin'} color={'grey'}>4h</Text>
             </Box>
             <Box ml={5} mt={2}>
@@ -50,7 +49,7 @@ export function ThreadCard(props: ThreadCard) {
               <Image mt={4} src={props.image} objectFit={'cover'} rounded={'md'} w={'20em'} h={'18em'}/>
               <Box mt={5}>
                 <Button onClick={handlerLikeClick} colorScheme={isLiked ? "red" : "gray"}><i className="fa-regular fa-thumbs-up"></i>{likesCount}</Button>
-                <Link to="/" key={props.id}> 
+                <Link to={props.id.toString()} key={props.id}> 
                 <Button ml={5}>10 Replies</Button>
                 </Link>
               </Box>

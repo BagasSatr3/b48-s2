@@ -10,8 +10,14 @@ export class User {
 
     @Column()
     username: string
+    
+    @Column()
+    email: string
 
-    @Column({ select: false })
+    @Column()
+    full_name: string
+
+    @Column({ select: true })
     password: string
     
     @Column({ nullable: true })

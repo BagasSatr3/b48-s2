@@ -5,8 +5,11 @@ class AuthController {
     find(req: Request, res: Response) {
         AuthService.find(req,res)
     }
-    post(req: Request, res: Response) {
-        AuthService.post(req,res)
+    register(req: Request, res: Response) {
+        AuthService.register(req,res)
+    }
+    login(req: Request, res: Response) {
+        AuthService.login(req,res)
     }
 }
 

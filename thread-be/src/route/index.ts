@@ -29,6 +29,7 @@ router.put("/user/:id", UserController.update)
 router.delete("/user/:id", UserController.delete)
 
 router.get("/auth", AuthController.find)
-router.post("/auth", AuthController.post)
+router.post("/auth/register", AuthController.register)
+router.post("/auth/login", AuthController.login)
 
 export default router

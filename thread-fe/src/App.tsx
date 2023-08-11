@@ -1,4 +1,4 @@
-import { ThreadDetail } from './features/thread'
+// import { ThreadDetail } from './features/thread'
 import { Pages } from './pages'
 import { Home } from './pages/home'
 import { BrowserRouter, Routes, Route} from "react-router-dom";
