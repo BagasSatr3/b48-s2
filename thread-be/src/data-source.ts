@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     password: "delta12",
     database: "db_thread",
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: ["src/entities/*.ts"],
     migrations: ["src/migrations/*.ts"],
     subscribers: [],

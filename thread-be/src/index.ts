@@ -3,12 +3,16 @@ import { Thread } from "./entities/Threads"
 import * as express from "express"
 import { Request, Response } from "express"
 import router from "./route"
+// import * as dotenv from "dotenv"
+// import * as cookieParser from "cookie-parser"
+// dotenv.config()
 
 AppDataSource.initialize().then(async () => {
     const app = express()
     const port = 5000
     const cors = require('cors')
 
+    // app.use(cookieParser())
     app.use(cors())
 
     // const route = express.Router()

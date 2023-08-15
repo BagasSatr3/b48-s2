@@ -5,15 +5,13 @@ import { Request, Response } from "express";
 import Joi = require("joi");
 import { userSchema } from "../utils/Validations";
 import * as bcrypt from "bcrypt"
-
+import * as jwt from "jsonwebtoken"
 
 
 class AuthService {
     private readonly userRepository: Repository<User> =
     AppDataSource.getRepository(User)
     
-     
-
     async find(req: Request, res: Response) {
         try {
             const user = await this.userRepository.find()
@@ -63,32 +61,48 @@ class AuthService {
 
 
     async login(req: Request, res: Response) {
-        // try {
+        try {
             const {email, password} = req.body
-            // const salt = await bcrypt.genSalt()
-            // const hashed = await bcrypt.hash(password, salt)
-
-            // const {error, value} =  userSchema.validate(data)
-            // const valid = error == null
-
             const user = await this.userRepository.findOne({where:{email}})
-            // res.send(user)
             if(!user) {
                 return res.status(401).json({ error: 'Invalid email or password' });
             }
             const comparePass = await bcrypt.compare(password, user.password)
 
+            const userId = user.id
+            const username = user.username
+            const emailT = user.email
+            const secretKey = "adalahmanjur"
+
+            const token = jwt.sign({userId, username, emailT}, secretKey,{
+                expiresIn: '1h'
+            })
+
             if (comparePass){
-                res.json({ message: 'Authentication successful' });
+                // console.log("Authentication", accessToken)
+                res.json({ token } );
             } else {
                 return res.status(401).json({ error: 'Invalid email or password' });
             }
 
-            // return res.send(comparePass)
+        } catch (err) {
+            return res.status(500).json({ error: 'An error occurred' });
+        }
+    }
 
-        // } catch (err) {
-        //     return res.status(500).json({ error: 'An error occurred' });
-        // }
+    async check(req: Request, res: Response) {
+        try {
+            const loginSession = res.locals.loginSession
+            const user = await this.userRepository.findOne({
+                where:{
+                    id: loginSession.userId
+                }
+            })
+
+            return res.status(200).json({user, message:"Token is valid"})
+        } catch(err) {
+            return res.status(500).json("Something wrong in server")
+        }
     }
 }
 

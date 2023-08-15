@@ -31,10 +31,13 @@ class ThreadService {
 
     async post(req: Request, res: Response) {
         try {
+            const loginSession = res.locals.loginSession
+            const filename = res.locals.filename
             const data = req.body
             const thread = await this.threadRepository.create({
                 content: data.content,
-                image: data.image,
+                image: filename,
+                user: loginSession.userId
             })
             const results = await this.threadRepository.save(thread)
             return res.send(results)

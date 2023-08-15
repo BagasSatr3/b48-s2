@@ -26,6 +26,9 @@ export class User {
     @Column({ nullable: true })
     profile_description: string
 
+    // @Column({ nullable: true })
+    // refresh_token: string
+
     @OneToMany(() => Thread, (threads) => threads.user)
     threads: Thread[]
 

@@ -1,13 +1,23 @@
 import {useEffect, useState} from 'react'
-import { ThreadCard } from '../../features/thread'
-import { Box } from "@chakra-ui/react"
+import { Box, Button, FormControl, Input, Text } from "@chakra-ui/react"
 import { API } from '@/libs/api'
+import { IThreadCard } from '@/interface/thread'
+import { ThreadCard } from '@/features/thread'
+import { useThread } from '@/features/thread/hooks'
 
 export function Home() {
-    const [Threads, setThreads] = useState<ThreadCard[]>([])
+  const {handleChange, handleAddContent} = useThread()
+
+    function hook() {
+    const [Threads, setThreads] = useState<IThreadCard[]>([])
     const fetchData = async () => {
         try {
-            const res = await API.get("/threads")
+            const res = await API.get("/threads", {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`
+                }
+            })
+            
             setThreads(res.data)
         } catch (err) {
             console.log(err)
@@ -17,13 +27,26 @@ export function Home() {
     useEffect(() => {
         fetchData()
     }, [])
+    return Threads
+}
+const nes = hook()
 
     return (
 
         <>
-
+        <Box>
+            <form encType="">
+              <FormControl>
+                <Text mt={2} fontSize={"xl"}>Content</Text>
+                <Input name={"content"} id={"content"} placeholder="Here Content" autoFocus={false} onChange={handleChange}/>
+                <Text mt={2} fontSize={"xl"}>Image</Text>
+                <Input type={"text"} name={"image"} id={"image"} placeholder="Your Email Here" autoFocus={false} onChange={handleChange}/>
+                <Button colorScheme={"black"} backgroundColor={"black"} onClick={handleAddContent}>Create</Button>
+              </FormControl>
+            </form>
+          </Box>
         <Box >
-            {Threads.map((item,index) => (
+            {nes.map((item,index) => (
         <ThreadCard key={index} content={item.content} image={item.image} user={item.user} id={item.id}/>
       ))}
         </Box>
