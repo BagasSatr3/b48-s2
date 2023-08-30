@@ -18,8 +18,10 @@ export function upload(fieldName: string) {
             if (err) {
                 return res.status(400).json({ err })
             }
-    
-            res.locals.filename = req.file.filename
+            
+            if (req.file) {
+                res.locals.filename = req.file.filename
+            }
             next()
         })
     }

@@ -6,10 +6,10 @@ class UserController {
         UserService.find(req,res)
     }
 
-    findOne(req: Request, res: Response) {
-        UserService.findOne(req,res)
+    profile(req: Request, res: Response) {
+        UserService.profile(req,res)
     }
-
+    
     post(req: Request, res: Response) {
         UserService.post(req,res)
     }

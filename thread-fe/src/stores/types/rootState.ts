@@ -3,4 +3,4 @@ import rootReducer from "../rootReducer"
 
 export type RootState = ReturnType<typeof rootReducer>
 
-const auth = useSelector((state : RootState) => state.auth.data)
+// const auth = useSelector((state : RootState) => state.auth.data)

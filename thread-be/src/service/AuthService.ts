@@ -72,9 +72,11 @@ class AuthService {
             const userId = user.id
             const username = user.username
             const emailT = user.email
+            const full_name = user.full_name
+            const profile_description = user.profile_description
             const secretKey = "adalahmanjur"
 
-            const token = jwt.sign({userId, username, emailT}, secretKey,{
+            const token = jwt.sign({userId, username, emailT, full_name, profile_description}, secretKey,{
                 expiresIn: '1h'
             })
 

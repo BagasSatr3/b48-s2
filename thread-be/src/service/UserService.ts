@@ -2,10 +2,14 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../data-source";
 import { Request, Response } from "express";
 import { User } from '../entities/Users';
+import { Thread } from "../entities/Threads";
 
 class UserService {
     private readonly userRepository: Repository<User> =
     AppDataSource.getRepository(User)
+
+    private readonly threadRepository: Repository<Thread> =
+    AppDataSource.getRepository(Thread)
 
     async find(req: Request, res: Response) {
         try {
@@ -16,10 +20,13 @@ class UserService {
         }
     }
 
-    async findOne(req: Request, res: Response) {
+    async profile(req: Request, res: Response) {
         try {
-            const results = await this.userRepository.findOneBy({
-                id: Number(req.params.id)
+            const results = await this.userRepository.findOne({
+                where: {
+                    id: Number(req.params.id)
+                },
+                relations: ["threads", "threads.user"]
             })
             return res.send(results)
         } catch (err) {

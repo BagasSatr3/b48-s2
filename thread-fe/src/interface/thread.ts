@@ -7,17 +7,17 @@ export interface User {
   }
   
 export interface IThreadCard {
-    // posted_at: string,
-    content: string,
-    image: string,
-    // like_count: number,
+    posted_at?: string,
+    content?: string,
+    image?: string,
+    likes_count: number,
     id: number,
-    // replies_count: number,
-    // is_liked: boolean
+    replies_count: number,
+    is_liked: boolean
     user?: User
 }
 
 export interface IAddContent {
     content: string,
-    image: string,
+    image: string | Blob | MediaSource,
 }
