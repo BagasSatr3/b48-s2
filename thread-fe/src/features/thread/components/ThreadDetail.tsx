@@ -33,7 +33,7 @@ export function ThreadDetail() {
         <Box  >
 
         <Box>
-        <ThreadCard key={Threads?.id} content={Threads?.content} image={Threads?.image} user={Threads?.user} id={Threads?.id}/>
+        <ThreadCard key={Threads.id} content={Threads.content} image={Threads.image} user={Threads.user} id={Threads.id}/>
         </Box>
 
 
