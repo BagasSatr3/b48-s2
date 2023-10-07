@@ -1,5 +1,5 @@
-import { Box, Button, Image, Text } from "@chakra-ui/react";
-import { Link, useParams } from "react-router-dom";
+import { Box, Image, Text } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 import {useEffect, useState} from 'react'
 import { IThreadCard } from "@/interface/thread";
 import { API } from "@/libs/api";

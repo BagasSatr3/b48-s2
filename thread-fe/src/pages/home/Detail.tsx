@@ -3,14 +3,13 @@ import { ThreadDetail } from '../../features/thread'
 import { Box, Button, FormControl, Input } from '@chakra-ui/react'
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { API } from '@/libs/api'
-import { IReply, IReplyPost } from '@/interface/reply'
+import { IReplyPost } from '@/interface/reply'
 import { IThreadCard } from '@/interface/thread'
 import { useParams } from 'react-router-dom'
 
 export function Detail() {
 
-    const [threadId, setThreadId] = useState()
-    const [replies, setReplies] = useState<IThreadCard[]>([])
+    const [, setReplies] = useState<IThreadCard[]>([])
     const { id } = useParams()
     // const [Threads, setThreads] = useState<IThreadCard[]>([])
     const [form, setForm] = useState<IReplyPost>({

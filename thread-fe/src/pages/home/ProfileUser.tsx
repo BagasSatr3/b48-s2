@@ -1,6 +1,5 @@
 import { ProfileDetail } from "@/features/profile";
 import { ThreadCard } from "@/features/thread";
-import { IThreadCard } from "@/interface/thread";
 import { IProfile } from "@/interface/user";
 import { API } from "@/libs/api";
 import { GET_THREADS } from "@/stores/rootReducer";

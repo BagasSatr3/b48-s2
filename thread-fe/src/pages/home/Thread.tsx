@@ -1,10 +1,8 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react'
-import { Box, Button, FormControl, Image, Input, Text, useToast } from "@chakra-ui/react"
+import { Box, Button, FormControl, Image, Input, useToast } from "@chakra-ui/react"
 import { API } from '@/libs/api'
 import { IThreadCard } from '@/interface/thread'
 import { ThreadCard } from '@/features/thread'
-import { FaImage } from 'react-icons/fa';
-import { useThread } from '@/features/thread/hooks'
 
 export function Thread() {
   const toast = useToast

@@ -1,9 +1,5 @@
-import { IThreadCard } from "@/interface/thread";
 import { IProfile } from "@/interface/user";
-import { API } from "@/libs/api";
 import { Box, Image, Text } from "@chakra-ui/react";
-import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom";
 
 export function ProfileDetail(props: IProfile) {
     return (

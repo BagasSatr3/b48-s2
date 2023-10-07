@@ -1,4 +1,3 @@
-import { IThreadCard } from "./thread"
 import { IUser } from "./user"
 
 export interface IReply {

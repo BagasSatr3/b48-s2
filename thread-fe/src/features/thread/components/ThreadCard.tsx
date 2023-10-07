@@ -1,8 +1,7 @@
 import { IThreadCard } from "@/interface/thread"
 import { Image, Box, Button, Text, Icon } from "@chakra-ui/react"
-import {AiFillLike} from "react-icons/ai"
-import {useState} from 'react'
-import {Link, useNavigate} from "react-router-dom"
+import { AiFillLike } from "react-icons/ai"
+import { useNavigate } from "react-router-dom"
 import { useThreadsCard } from "../hooks/useThreadCard"
 
 export function ThreadCard(props: IThreadCard) {

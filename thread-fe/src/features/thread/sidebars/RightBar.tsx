@@ -1,11 +1,10 @@
 import { FollowCard } from "@/features/follow"
 import { ProfileCard } from "@/features/profile"
-import { IFollow } from "@/interface/follow"
 import { API } from "@/libs/api"
 import { GET_FOLLOWS } from "@/stores/rootReducer"
 import { RootState } from "@/stores/types/rootState"
-import { Image, Box, Button, Text } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { Box } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 

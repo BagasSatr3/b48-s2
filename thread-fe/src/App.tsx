@@ -5,8 +5,6 @@ import { Detail } from './pages/home/Detail';
 import { Login, Register } from './features/auth';
 import { useEffect, useState } from 'react';
 import { API, setAuthToken } from './libs/api';
-import { useSelector } from 'react-redux';
-import { RootState } from './stores/types/rootState';
 import { useDispatch } from 'react-redux';
 import { AUTH_CHECK, AUTH_ERROR } from './stores/rootReducer';
 import { Follow, Profile, ProfileEdit, Search, Thread } from './pages/home';

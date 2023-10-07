@@ -1,6 +1,4 @@
-import { FollowCard } from "@/features/follow";
 import { SearchCard } from "@/features/search";
-import { IFollow } from "@/interface/follow";
 import { IUseSearch } from "@/interface/user";
 import { API } from "@/libs/api";
 import { GET_FOLLOWS } from "@/stores/rootReducer";
@@ -12,11 +10,9 @@ import { useSelector } from "react-redux";
 
 export function Search() {
     const dispatch = useDispatch()
-    const [search, setSearch] = useState('')
     const [searchQuery, setSearchQuery] = useState('')
     const [searchResults, setSearchResulls] = useState<IUseSearch[]>([])
     const followState = useSelector((state: RootState) => state.follow.followState)
-    const follows = useSelector((state: RootState) => state.follow.follows)
     
     const handleSearch = async () => {  
         try {

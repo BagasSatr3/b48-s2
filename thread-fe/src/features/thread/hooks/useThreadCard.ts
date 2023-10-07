@@ -1,6 +1,5 @@
-import { IThreadCard } from "@/interface/thread";
 import { API } from "@/libs/api";
-import { GET_THREADS, SET_THREAD_LIKE } from "@/stores/rootReducer";
+import { SET_THREAD_LIKE } from "@/stores/rootReducer";
 import { RootState } from "@/stores/types/rootState";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";

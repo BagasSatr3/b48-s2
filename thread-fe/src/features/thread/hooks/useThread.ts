@@ -51,19 +51,19 @@ export function useThread() {
         }
     }
     
-    async function handleAddContent() {
-        try {
-            const response = await API.post('/threads', form, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`
-                }
-            })
-            console.log(response)
-        } catch (err) {
-            console.log(err)
-        }
+    // async function handleAddContent() {
+    //     try {
+    //         const response = await API.post('/threads', form, {
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.token}`
+    //             }
+    //         })
+    //         console.log(response)
+    //     } catch (err) {
+    //         console.log(err)
+    //     }
         
-    }
+    // }
 
     const fileInputRef = useRef<HTMLInputElement>(null)
 

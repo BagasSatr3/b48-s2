@@ -1,8 +1,7 @@
 import { IUseSearch } from '@/interface/user'
 import { API } from '@/libs/api'
 import { SET_FOLLOW } from '@/stores/rootReducer'
-import { Box, Button, FormControl, Image, Input, Text } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
+import { Box, Button, Image, Text } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
