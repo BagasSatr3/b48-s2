@@ -1,4 +1,4 @@
-import { Box, Text, Image} from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 // import ThreadsData from '../../../utils/dummy-data.json';
 import {useEffect, useState} from 'react';
@@ -33,7 +33,7 @@ export function ThreadDetail() {
         <Box  >
 
         <Box>
-        <ThreadCard key={Threads?.id} content={Threads?.content} image={Threads?.image} user={Threads?.user} id={Number(Threads?.id)}/>
+        <ThreadCard key={Threads?.id} content={Threads?.content} image={Threads?.image} user={Threads?.user} id={Threads?.id)}/>
         </Box>
 
 
