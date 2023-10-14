@@ -33,7 +33,15 @@ export function ThreadDetail() {
         <Box  >
 
         <Box>
-        <ThreadCard key={Threads?.id as number} content={Threads?.content} image={Threads?.image} user={Threads?.user} id={Threads?.id as number}/>
+        <ThreadCard
+            id={Threads?.id as number}
+            content={Threads?.content}
+            image={Threads?.image}
+            user={Threads?.user}
+            likes_count={Threads?.likes_count as number}
+            replies_count={Threads?.replies_count as number}
+            is_liked={Threads?.is_liked as boolean}
+          />
         </Box>
 
 
