@@ -31,7 +31,7 @@ AppDataSource.initialize().then(async () => {
         res.send('hello world')
     })
 
-    app.listen(`0.0.0.0:${port}`, () => {
+    app.listen(port, "0.0.0.0" () => {
         console.log('Server is running on localhost 5000')
     })
 
