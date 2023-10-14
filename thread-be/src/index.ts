@@ -5,7 +5,7 @@ import { Request, Response } from "express"
 import router from "./route"
 import * as dotenv from "dotenv"
 import bodyParser = require("body-parser")
-import { processQueue } from "./worker/ThreadWorker"
+// import { processQueue } from "./worker/ThreadWorker"
 // import * as cookieParser from "cookie-parser"
 dotenv.config()
 
@@ -25,7 +25,7 @@ AppDataSource.initialize().then(async () => {
     app.use(express.json())
     app.use("/api/v1", router)
 
-    processQueue()
+    // processQueue()
 
     app.get("/", (req: Request, res: Response) => {
         res.send('hello world')
