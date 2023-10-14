@@ -3,14 +3,13 @@ import { Pages } from './pages'
 import { Routes, Route, useNavigate} from "react-router-dom";
 import { Detail } from './pages/home/Detail';
 import { Login, Register } from './features/auth';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { API, setAuthToken } from './libs/api';
 import { useDispatch } from 'react-redux';
 import { AUTH_CHECK, AUTH_ERROR } from './stores/rootReducer';
 import { Follow, Profile, ProfileEdit, Search, Thread } from './pages/home';
 
 function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(true)
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -21,22 +20,18 @@ function App() {
       const response = await API.get('/auth/check')
       console.log("auth check berhasil", response)
       dispatch(AUTH_CHECK(response.data))
-      setIsLoading(false)
     } catch (err) {
       dispatch(AUTH_ERROR())
       console.log("auth error:", err)
-      setIsLoading(false)
       navigate('/login')
     }
   }
 
   useEffect(()=> {
     if(localStorage.token) {
-      setIsLoading(false)
       authCheck()
     } else {
-      setIsLoading(false)
-      // navigate('/login')
+      navigate('/login')
     }
   }, [])
 
@@ -74,7 +69,6 @@ function App() {
 
   return (
     <>
-    {isLoading ? null : (
     
     <>
       <Routes>
@@ -94,7 +88,6 @@ function App() {
           {/* </Route> */}
       </Routes>
     </>
-    )} 
     </>
   )
 }
