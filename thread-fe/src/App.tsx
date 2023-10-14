@@ -1,15 +1,16 @@
 // import { ThreadDetail } from './features/thread'
 import { Pages } from './pages'
-import { Routes, Route, useNavigate} from "react-router-dom";
+import { Routes, Route, useNavigate, Outlet} from "react-router-dom";
 import { Detail } from './pages/home/Detail';
 import { Login, Register } from './features/auth';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { API, setAuthToken } from './libs/api';
 import { useDispatch } from 'react-redux';
 import { AUTH_CHECK, AUTH_ERROR } from './stores/rootReducer';
 import { Follow, Profile, ProfileEdit, Search, Thread } from './pages/home';
 
 function App() {
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -20,18 +21,25 @@ function App() {
       const response = await API.get('/auth/check')
       console.log("auth check berhasil", response)
       dispatch(AUTH_CHECK(response.data))
+      setIsLoading(false)
+      return <Outlet/>  
     } catch (err) {
       dispatch(AUTH_ERROR())
       console.log("auth error:", err)
+      setIsLoading(false)
       navigate('/login')
+      return <Outlet/>  
+      
     }
   }
 
   useEffect(()=> {
     if(localStorage.token) {
+      setIsLoading(false)
       authCheck()
     } else {
-      navigate('/login')
+      setIsLoading(false)
+      // navigate('/login')
     }
   }, [])
 
@@ -69,6 +77,7 @@ function App() {
 
   return (
     <>
+    {isLoading ? null : (
     
     <>
       <Routes>
@@ -88,6 +97,7 @@ function App() {
           {/* </Route> */}
       </Routes>
     </>
+    )} 
     </>
   )
 }
