@@ -12,7 +12,7 @@ dotenv.config()
 
 AppDataSource.initialize().then(async () => {
     const app = express()
-    const port = 5000
+    const port = 433
     const cors = require('cors')
 
     // app.use(cookieParser())
