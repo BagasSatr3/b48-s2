@@ -1,6 +1,6 @@
 // import { ThreadDetail } from './features/thread'
 import { Pages } from './pages'
-import { Routes, Route, useNavigate, Outlet, Navigate} from "react-router-dom";
+import { Routes, Route, useNavigate} from "react-router-dom";
 import { Detail } from './pages/home/Detail';
 import { Login, Register } from './features/auth';
 import { useEffect, useState } from 'react';
@@ -56,21 +56,21 @@ function App() {
   //   } 
   // }
 
-  function IsLogin() {
-    if (!localStorage.token) {
-      return <Navigate to={"/login"}/>
-    } else {
-      return <Outlet/>  
-    }
-  }
+  // function IsLogin() {
+  //   if (!localStorage.token) {
+  //     return <Navigate to={"/login"}/>
+  //   } else {
+  //     return <Outlet/>  
+  //   }
+  // }
 
-  function IsNotLogin() {
-    if (localStorage.token) {
-      return <Navigate to={"/"}/> 
-    } else {
-      return <Outlet/>
-    }
-  }
+  // function IsNotLogin() {
+  //   if (localStorage.token) {
+  //     return <Navigate to={"/"}/> 
+  //   } else {
+  //     return <Outlet/>
+  //   }
+  // }
 
   return (
     <>
