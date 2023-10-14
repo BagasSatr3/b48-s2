@@ -78,7 +78,7 @@ function App() {
     
     <>
       <Routes>
-        <Route path='/' element={<IsLogin/>}>
+        {/* <Route path='/' element={<IsLogin/>}> */}
           <Route path='/' element={<Pages/>}>
             <Route index element={<Thread/>}/>
             <Route path=':id' element={<Detail/>}/>
@@ -86,12 +86,12 @@ function App() {
             <Route path='search' element={<Search/>}/>
             <Route path='profile/:id' element={<Profile/>}/>
             <Route path='profile/edit/:id' element={<ProfileEdit/>}/>
-          </Route>
+          {/* </Route> */}
         </Route>
-          <Route path='/' element={< IsNotLogin/>}>
+          {/* <Route path='/' element={< IsNotLogin/>}> */}
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
-          </Route>
+          {/* </Route> */}
       </Routes>
     </>
     )} 
