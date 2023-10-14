@@ -3,11 +3,11 @@ import { Thread } from "./entities/Threads"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
+    host: "containers-us-west-91.railway.app",
+    port: 6404,
     username: "postgres",
-    password: "1234",
-    database: "db_thread",
+    password: "xo4jf31B0YsIivYJi372",
+    database: "railway",
     synchronize: true,
     logging: true,
     entities: ["src/entities/*.ts"],
