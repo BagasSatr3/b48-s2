@@ -12,7 +12,7 @@ dotenv.config()
 
 AppDataSource.initialize().then(async () => {
     const app = express()
-    const port = 5000
+    const port = process.env.PORT as string
     const cors = require('cors')
 
     // app.use(cookieParser())
@@ -32,7 +32,7 @@ AppDataSource.initialize().then(async () => {
     })
 
     app.listen(port, () => {
-        console.log('Server is running on localhost 5000')
+        console.log('Server is running!')
     })
 
 
