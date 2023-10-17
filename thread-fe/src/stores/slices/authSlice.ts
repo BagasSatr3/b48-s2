@@ -27,7 +27,7 @@ export const authSlice = createSlice({
             const username = action.payload.username
             const token = action.payload.token
             const profile_description = action.payload.profile_description
-            const picture = action.payload.picture
+            const picture = action.payload.profile_picture
             const followers_count = action.payload.followers_count
             const followings_count = action.payload.followings_count
             // const {

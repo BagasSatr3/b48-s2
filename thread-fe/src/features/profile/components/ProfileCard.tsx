@@ -10,7 +10,7 @@ export function ProfileCard() {
             <Box backgroundColor={'blackAlpha.400'} rounded={'lg'}>
             <Text fontSize={'lg'} p={2} mx={1} color={'white'} fontWeight={'bold'}>My Profile</Text>
             <Image src="https://images.alphacoders.com/130/1306217.jpg"  m={3} objectFit={'cover'} rounded={'xl'} w={'18em'} h={'10em'}/>
-            <Image src="https://images.alphacoders.com/130/1306217.jpg" ml={7} mt={-20} objectFit={'cover'} rounded={'full'} w={'7em'} h={'7em'}/>
+            <Image src={auth.picture} ml={7} mt={-20} objectFit={'cover'} rounded={'full'} w={'7em'} h={'7em'}/>
             <Button display={'flex'} justifyContent={'end'} float={'right'} mr={7} mt={-15} rounded={'full'}>Edit Profile</Button>
             <Box p={4} mx={1}>
               <Text fontSize={'xl'}  color={'white'} fontWeight={'bold'}>{auth.full_name}</Text>

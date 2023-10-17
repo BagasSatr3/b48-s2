@@ -36,7 +36,7 @@ router.delete("/threads/:id",verifyToken, ThreadsController.delete)
 router.get("/user",verifyToken, UserController.find)
 router.get("/user/:id",verifyToken, UserController.profile)
 router.post("/user",verifyToken, UserController.post)
-router.put("/user/:id",verifyToken, UserController.update)
+router.patch("/user/:id",verifyToken, upload('image'), UserController.update)
 router.delete("/user/:id",verifyToken, UserController.delete)
 
 // router.get("/auth", AuthController.find)

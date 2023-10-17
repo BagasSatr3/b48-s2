@@ -3,6 +3,7 @@ import { AppDataSource } from "../data-source";
 import { Request, Response } from "express";
 import { User } from '../entities/Users';
 import { Thread } from "../entities/Threads";
+import { v2 as cloudinary } from "cloudinary"
 
 class UserService {
     private readonly userRepository: Repository<User> =
@@ -44,17 +45,36 @@ class UserService {
         // }
     }
 
-    async update(req: Request, res: Response) {
+    async update(reqBody?: any, id?: any, filename?: any): Promise<any> {
         try {
-            const id = parseInt(req.params.id)
-            const user = await this.userRepository.findOneBy({
-                id: id
+            const user = await this.userRepository.findOneOrFail({
+                where: {
+                    id: id
+                }
             })
-            this.userRepository.merge(user, req.body)
-            const results = await this.userRepository.save(user)
-            return res.send(results)
+
+            cloudinary.config({ 
+                cloud_name: 'dlkgkipax', 
+                api_key: '371515624215563', 
+                api_secret: '2brsnHMo64nR2G7AMw133GDij-k' 
+            });
+
+            const cloudinaryResponse = await cloudinary.uploader.upload(
+                "./uploads/" + filename
+            )
+
+            user.username = reqBody.username
+            user.full_name = reqBody.fullName
+            user.profile_description = reqBody.description
+            user.profile_picture = cloudinaryResponse.secure_url
+            
+            const userUpdate= await this.userRepository.save(user)
+            return {
+                message: 'Sucessfully update user data!',
+                user: userUpdate,
+            }
         } catch (err) {
-            return res.status(500).json({ error: "error while updating users" })
+            throw new Error("Something wrong on the server!")
         }
     }
 

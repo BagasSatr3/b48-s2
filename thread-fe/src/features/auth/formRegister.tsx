@@ -1,39 +1,31 @@
-import { Box, Button, FormControl, Input, Text } from "@chakra-ui/react";
+import { Button, FormControl, Input, Text } from "@chakra-ui/react";
 import { useRegister } from "@/features/hooks/useRegister"
 
-export function Register() {
+export function FormRegister() {
     const {handleChange, handleRegister} = useRegister()
 
     return (
     <>
-        <Box backgroundColor={"blackAlpha.700"}>
-            <br />
-            <br />
-            <br />
-            <Box display={"flex"} justifyContent={"center"}>
-                <Box m={5} w={"27em"} border={"1px"} borderColor={'white'}>
-                    <FormControl>
-                        <Text fontSize={"3xl"} textAlign={"center"}>Form Register</Text>
-                        <Box m={4}>
-                            <Text mt={2} fontSize={"xl"}>Full Name</Text>
-                            <Input name={"full_name"} placeholder="Your Full Name Here"  autoFocus={false} onChange={handleChange}/>
-                            <Text mt={2} fontSize={"xl"}>Username</Text>
-                            <Input name={"username"} placeholder="Your Username Here" autoFocus={false} onChange={handleChange}/>
-                            <Text mt={2} fontSize={"xl"}>Email</Text>
-                            <Input name={"email"} placeholder="Your Email Here" autoFocus={false} onChange={handleChange}/>
-                            <Text mt={2} fontSize={"xl"}>Password</Text>
-                            <Input type={"password"} name={"password"} placeholder="Your Email Here" autoFocus={false} onChange={handleChange}/>
-                            <Button colorScheme={"black"} backgroundColor={"black"} onClick={handleRegister}>Create</Button>
-                        </Box>
-                    </FormControl>  
-                </Box>
-            </Box>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-        </Box>
+        <FormControl
+      isRequired
+      display={"flex"}
+      flexDirection={"column"}
+      gap={3}
+      width={"300px"}
+    >
+      <Text color={"brand.green"} fontSize={"2xl"} fontWeight={"bold"}>
+        Connect
+      </Text>
+      <Text fontSize={"2xl"} fontWeight={"bold"}>
+        Create Account Connect
+      </Text>
+      <Input placeholder="First name" name="full_name" onChange={handleChange} />
+      <Input placeholder="Username" name="username" onChange={handleChange} />
+      <Input placeholder="Email" name="email" onChange={handleChange} />
+      <Input type="password" placeholder="Password" name="password" onChange={handleChange} />
+      <Button backgroundColor={"green"} colorScheme="green" color={"white"} onClick={handleRegister}>Create</Button>
+    </FormControl>
+  );
     </>
     )
 }

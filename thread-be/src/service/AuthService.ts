@@ -37,7 +37,7 @@ class AuthService {
                 full_name: data.full_name,
                 username: data.username,
                 password: hashed,
-                profile_picture: data.profile_picture,
+                profile_picture: "https://as1.ftcdn.net/v2/jpg/02/48/42/64/1000_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
                 profile_description: data.profile_description,
                 email: data.email,
             })
