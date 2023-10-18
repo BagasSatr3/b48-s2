@@ -7,7 +7,7 @@ const initialAuthState: IUser = {
         id: 0,
         email: "",
         full_name: "",
-        picture: "",
+        profile_picture: "",
         username: "",
         profile_description: "",
         followers_count: 0,
@@ -27,7 +27,7 @@ export const authSlice = createSlice({
             const username = action.payload.username
             const token = action.payload.token
             const profile_description = action.payload.profile_description
-            const picture = action.payload.profile_picture
+            const profile_picture = action.payload.profile_picture
             const followers_count = action.payload.followers_count
             const followings_count = action.payload.followings_count
             // const {
@@ -51,7 +51,7 @@ export const authSlice = createSlice({
             state.full_name = full_name
             state.username = username
             state.profile_description = profile_description
-            state.picture = picture
+            state.profile_picture = profile_picture
             state.followers_count = followers_count
             state.followings_count = followings_count
         },
@@ -62,7 +62,7 @@ export const authSlice = createSlice({
                 full_name,
                 username,
                 profile_description,
-                picture,
+                profile_picture,
                 followers_count,
                 followings_count,
             } = action.payload.user
@@ -72,7 +72,7 @@ export const authSlice = createSlice({
             state.full_name = full_name
             state.username = username
             state.profile_description = profile_description
-            state.picture = picture
+            state.profile_picture = profile_picture
             state.followers_count = followers_count
             state.followings_count = followings_count   
         },

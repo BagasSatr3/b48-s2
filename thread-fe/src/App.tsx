@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import { API, setAuthToken } from './libs/api';
 import { useDispatch } from 'react-redux';
 import { AUTH_CHECK, AUTH_ERROR } from './stores/rootReducer';
-import { Follow, Profile, ProfileEdit, Search, Thread } from './pages/home';
+import { Follow, Profile, Search, Thread } from './pages/home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import { ProfileEdit } from './pages/home/ProfileEdit';
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)

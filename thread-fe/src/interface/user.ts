@@ -3,7 +3,7 @@ export interface IUser {
     full_name?: string
     username?: string
     email?:string
-    picture?: string
+    profile_picture?: string
     profile_description?: string
     followers_count?: number
     followings_count?: number
