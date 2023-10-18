@@ -25,7 +25,6 @@ export function FormRegister() {
       <Input type="password" placeholder="Password" name="password" onChange={handleChange} />
       <Button backgroundColor={"green"} colorScheme="green" color={"white"} onClick={handleRegister}>Create</Button>
     </FormControl>
-  );
     </>
     )
 }
