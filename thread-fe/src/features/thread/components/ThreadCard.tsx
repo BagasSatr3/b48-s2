@@ -18,8 +18,8 @@ export function ThreadCard(props: IThreadCard) {
           <Image src={props.user?.profile_picture} objectFit={'cover'} rounded={'full'} w={'50px'} h={'50px'}/>
           <Box>
             <Box display={'flex'} alignItems={'center'} flexDirection={'row'} mt={3}>
-              <Text ml={5} fontWeight={'bold'} onClick={() => navigate(`/profile/${props.user?.id}`)} cursor={"pointer"}>{props.user?.username}</Text>
-              <Text ml={3}>@{props.user?.full_name}</Text>
+              <Text ml={5} fontWeight={'bold'} onClick={() => navigate(`/profile/${props.user?.id}`)} cursor={"pointer"}>{props.user?.full_name}</Text>
+              <Text ml={3}>@{props.user?.username}</Text>
               <Text ml={3} fontWeight={'thin'} color={'grey'}>4h</Text>
             </Box>
             <Box ml={5} mt={2}>

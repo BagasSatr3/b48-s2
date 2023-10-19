@@ -6,7 +6,7 @@ export function ProfileDetail(props: IProfile) {
         <Box backgroundColor={'blackAlpha.400'} rounded={'xl'}>
             <Box m={4} color={'white'}>
                 <Text fontSize={'4xl'} p={1}>{props?.full_name}</Text>
-                <Image src="https://images.alphacoders.com/130/1306217.jpg" objectFit={'cover'} rounded={'xl'} w={'41em'} maxH={'13em'}></Image>
+                <Image src={props?.profile_picture} objectFit={'cover'} rounded={'xl'} w={'41em'} maxH={'13em'}></Image>
                 <Image src={props?.profile_picture} ml={10} mt={-20} objectFit={'cover'} rounded={'full'} w={'9em'} h={'9em'}/>
                 <Text fontSize={'3xl'} mt={4}>{props?.full_name}</Text>
                 <Text color={'gray'}>@{props?.username}</Text>
