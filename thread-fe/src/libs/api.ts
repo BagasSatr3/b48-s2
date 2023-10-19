@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const API = axios.create({
-    baseURL: "https://b48-s2-be.vercel.app/api/v1/"
+    baseURL: "https://b48-s2-production.up.railway.app/api/v1/"
 })
 
 export function setAuthToken(token: string) {
