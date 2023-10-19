@@ -1,9 +1,8 @@
 import { AppDataSource } from "./data-source"
-import { Thread } from "./entities/Threads"
-import * as express from "express"
 import { Request, Response } from "express"
 import router from "./route"
-import * as dotenv from "dotenv"
+import express = require("express")
+import dotenv = require("dotenv")
 import bodyParser = require("body-parser")
 // import { processQueue } from "./worker/ThreadWorker"
 // import * as cookieParser from "cookie-parser"
