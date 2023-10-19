@@ -88,7 +88,7 @@ class AuthService {
             }
 
         } catch (err) {
-            return res.status(500).json({ error: 'An error occurred' });
+            return res.status(500).json(console.error);
         }
     }
 
