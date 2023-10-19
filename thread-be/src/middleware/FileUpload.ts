@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import * as multer from "multer";
+const multer = require("multer");
 
 export function upload(fieldName: string) {
     const storage = multer.diskStorage({
