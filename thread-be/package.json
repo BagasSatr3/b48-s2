@@ -40,6 +40,8 @@
       "start": "ts-node src/index.ts --omit=dev",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:generate": "npx typeorm-ts-node-commonjs migration:generate src/migrations/MyMigration -d src/data-source.ts",
-      "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts"
+      "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/data-source.ts",
+      "build": "tsc",
+      "deploy": "npm run build && npm start"
    }
 }
