@@ -3,6 +3,7 @@ import {LeftBar} from '../features/thread'
 import { Outlet, useNavigate } from "react-router-dom"
 import { AUTH_LOGOUT } from "@/stores/rootReducer"
 import { useDispatch } from "react-redux"
+import { RightBar } from "@/features/thread/sidebars/RightBar"
 export function Pages() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ export function Pages() {
 
             <GridItem colSpan={2}>
                 <Box position={'fixed'} bottom={0} top={0} overflowY={'scroll'} overscrollY={'none'} overflowX={'hidden'}>
-                {/* <RightBar/> */}
+                <RightBar/>
                 </Box>
             </GridItem>
            {/* </Box> */}
