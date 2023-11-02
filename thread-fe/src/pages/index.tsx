@@ -33,7 +33,7 @@ export function Pages() {
 
             <GridItem colSpan={2}>
                 <Box position={'fixed'} bottom={0} top={0} overflowY={'scroll'} overscrollY={'none'} overflowX={'hidden'}>
-                <RightBar/>
+                {/* <RightBar/> */}
                 </Box>
             </GridItem>
            {/* </Box> */}
