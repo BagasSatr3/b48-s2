@@ -1,5 +1,5 @@
 import {Box, Button, Grid, GridItem,} from "@chakra-ui/react"
-import {RightBar, LeftBar} from '../features/thread'
+import {LeftBar} from '../features/thread'
 import { Outlet, useNavigate } from "react-router-dom"
 import { AUTH_LOGOUT } from "@/stores/rootReducer"
 import { useDispatch } from "react-redux"
