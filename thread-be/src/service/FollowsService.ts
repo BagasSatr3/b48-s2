@@ -79,87 +79,186 @@ class FollowsService {
         }
     }
 
-    async create(reqBody: any, loginSession: any): Promise<any> {
+    // async create(reqBody: any, loginSession: any): Promise<any> {
+    //     try {
+    //         const isFollowExist = await this.followRepository.count({
+    //             where: { 
+    //                 follower: {
+    //                     id: loginSession.userId
+    //                 },
+    //                 followed: {
+    //                     id: reqBody.followed_user_id
+    //                 }
+    //             }
+    //         })
+
+    //         if (isFollowExist > 0) {
+    //             throw new Error("You already follow this user!")
+    //         }
+
+    //         if (reqBody.followed_user_id === loginSession.userId) {
+    //             throw new Error("You can't follow yourself!")
+    //         }
+
+    //         const isUserExist = await this.userRepository.count({
+    //             where: {
+    //                 id: reqBody.followed_user_id
+    //             }
+    //         })
+
+    //         if (isUserExist <= 0) {
+    //             throw new Error("this user doesn't exist!")
+    //         }
+
+    //         const follow = this.followRepository.create({
+    //             follower: {
+    //                 id: loginSession.userId
+    //             },
+    //             followed: {
+    //                 id: reqBody.followed_user_id
+    //             }
+    //         })
+
+    //         await this.followRepository.save(follow)
+
+    //         return {
+    //             message: "You follow this user!",
+    //             follow: follow
+    //         }
+
+    //     } catch(error) {
+    //         throw new Error(error.message)
+    //     }
+    // } 
+
+    // async delete(followedUserId: number, loginSession: any): Promise<any> {
+    //     try {
+    //         const follow = await this.followRepository.findOne({
+    //             where: {
+    //                 follower: {
+    //                     id: loginSession.userId
+    //                 },
+    //                 followed: {
+    //                     id: followedUserId
+    //                 }
+    //             }
+    //         })
+
+    //         if(!follow) {
+    //             throw new Error("You didn't follow this user!")
+    //         }
+
+    //         await this.followRepository.delete({
+    //             id:follow.id
+    //         })
+
+    //         return {
+    //             message: "You unfollow this user!",
+    //             follow: follow
+    //         }
+    //     } catch (error) {
+    //         throw new Error(error.message)
+    //     }
+    // }
+
+    async getFollowersAndFollowings(userId: number): Promise<{ followers: User[], followings: User[] }> {
+        const userRepository = this.userRepository;
+        const followRepository = this.followRepository;
+      
         try {
-            const isFollowExist = await this.followRepository.count({
-                where: { 
-                    follower: {
-                        id: loginSession.userId
-                    },
-                    followed: {
-                        id: reqBody.followed_user_id
-                    }
-                }
-            })
+          // Fetch the user for whom you want to get followers and followings
+          const user = await userRepository.findOne({
+            where: {
+                id: userId,
+            },
+          });
+      
+          if (!user) {
+            throw new Error("User not found");
+          }
+      
+          // Get the followers of the user
+          const followers = await followRepository.find({
+            where: { followed: user },
+            relations: ["follower"],
+          });
+      
+          // Get the users being followed by the user
+          const followings = await followRepository.find({
+            where: { follower: user },
+            relations: ["followed"],
+          });
+      
+          return {
+            followers: followers.map((follow) => follow.follower),
+            followings: followings.map((follow) => follow.followed),
+          };
+        } catch (error) {
+          throw new Error(`Unable to retrieve followers and followings: ${error.message}`);
+        }
+      }
+      
 
-            if (isFollowExist > 0) {
-                throw new Error("You already follow this user!")
+    async followUser(followerId: number, followedId: number): Promise<void> {
+        const userRepository = this.userRepository;
+        const followRepository = this.followRepository;
+      
+        const follower = await userRepository.findOne({
+            where: {
+                id: followerId
             }
-
-            if (reqBody.followed_user_id === loginSession.userId) {
-                throw new Error("You can't follow yourself!")
+        });
+        const followed = await userRepository.findOne({
+            where: {
+                id: followedId
             }
-
-            const isUserExist = await this.userRepository.count({
-                where: {
-                    id: reqBody.followed_user_id
-                }
-            })
-
-            if (isUserExist <= 0) {
-                throw new Error("this user doesn't exist!")
+        });
+      
+        if (!follower || !followed) {
+          throw new Error("Follower or followed user not found");
+        }
+      
+        const existingFollow = await followRepository.findOne({ 
+            where: {
+                followed: followed,
+                follower: follower,
             }
-
-            const follow = this.followRepository.create({
+         });
+      
+        if (existingFollow) {
+          throw new Error("User is already being followed");
+        }
+      
+        const follow = new Follow();
+        follow.follower = follower;
+        follow.followed = followed;
+      
+        await followRepository.save(follow);
+      }
+      
+      // Function to unfollow a user
+      async unfollowUser(followerId: number, followedId: number): Promise<void> {
+        const followRepository = this.followRepository;
+      
+        const follow = await followRepository.findOne({ 
+            where: {
                 follower: {
-                    id: loginSession.userId
+                    id: followerId,
                 },
                 followed: {
-                    id: reqBody.followed_user_id
-                }
-            })
-
-            await this.followRepository.save(follow)
-
-            return {
-                message: "You follow this user!",
-                follow: follow
-            }
-
-        } catch(error) {
-            throw new Error(error.message)
+                    id: followedId,
+                },
+            },
+         });
+      
+        if (!follow) {
+          throw new Error("User is not being followed");
         }
-    } 
-
-    async delete(followedUserId: number, loginSession: any): Promise<any> {
-        try {
-            const follow = await this.followRepository.findOne({
-                where: {
-                    follower: {
-                        id: loginSession.userId
-                    },
-                    followed: {
-                        id: followedUserId
-                    }
-                }
-            })
-
-            if(!follow) {
-                throw new Error("You didn't follow this user!")
-            }
-
-            await this.followRepository.delete({
-                id:follow.id
-            })
-
-            return {
-                message: "You unfollow this user!",
-                follow: follow
-            }
-        } catch (error) {
-            throw new Error(error.message)
-        }
-    }
+      
+        await followRepository.remove(follow);
+      }
+      
+      
 }
 
 export default new FollowsService()

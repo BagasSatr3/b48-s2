@@ -15,25 +15,26 @@ class FollowsController {
         }
     }
 
-    async create(req: Request, res: Response) {
+    async followUser(req: Request, res: Response) {
         try {
-            const loginSession = res.locals.loginSession
+            const followerId = res.locals.loginSession
+            const followedId = parseInt(req.params.userId)
 
-            const response = await FollowsService.create(req.body, loginSession)
+            const response = await FollowsService.followUser(followerId, followedId)
             return res.status(200).json(response)
         } catch (error) {
             return res.status(500).json({ error: error.message })
         }
     }
 
-    async delete(req: Request, res: Response) {
+    async unfollowUser(req: Request, res: Response) {
         try {
-            const loginSession = res.locals.loginSession
-            const followedUserId = parseInt(req.params.followed_user_id)
+            const followerId = res.locals.loginSession
+            const followedId = parseInt(req.params.userId)
 
-            const response = await FollowsService.delete(
-                followedUserId,
-                loginSession
+            const response = await FollowsService.unfollowUser(
+                followerId,
+                followedId
             )
             return res.status(200).json(response)
         } catch (error) {

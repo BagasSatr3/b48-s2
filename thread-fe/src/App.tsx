@@ -10,9 +10,13 @@ import { Follow, Profile, Search, Thread } from './pages/home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import { ProfileEdit } from './pages/home/ProfileEdit';
+import { RootState } from './stores/types/rootState';
+import { useSelector } from 'react-redux';
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
+  const auth = useSelector((state: RootState) => state.auth);
+
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -20,7 +24,7 @@ function App() {
   async function authCheck() {
     try {
       setAuthToken(localStorage.token)
-      const response = await API.get('/auth/check')
+      const response = await API.get(`/auth/check/${auth.id}`)
       console.log("auth check berhasil", response)
       dispatch(AUTH_CHECK(response.data))
       setIsLoading(false)

@@ -21,15 +21,15 @@ export const authSlice = createSlice({
     initialState: initialAuthState,
     reducers: {
         AUTH_LOGIN: (state, action) => {
-            const id = action.payload.id
-            const email = action.payload.email
-            const full_name = action.payload.full_name
-            const username = action.payload.username
+            const id = action.payload.user.id
+            const email = action.payload.user.email
+            const full_name = action.payload.user.full_name
+            const username = action.payload.user.username
             const token = action.payload.token
-            const profile_description = action.payload.profile_description
-            const profile_picture = action.payload.profile_picture
-            const followers_count = action.payload.followers_count
-            const followings_count = action.payload.followings_count
+            const profile_description = action.payload.user.profile_description
+            const profile_picture = action.payload.user.profile_picture
+            const followers_count = action.payload.user.followers_count
+            const followings_count = action.payload.user.followings_count
             // const {
             //     id,
             //     email,
@@ -56,16 +56,14 @@ export const authSlice = createSlice({
             state.followings_count = followings_count
         },
         AUTH_CHECK: (state, action) => {
-            const {
-                id,
-                email,
-                full_name,
-                username,
-                profile_description,
-                profile_picture,
-                followers_count,
-                followings_count,
-            } = action.payload.user
+            const id = action.payload.user.id
+            const email = action.payload.user.email
+            const full_name = action.payload.user.full_name
+            const username = action.payload.user.username
+            const profile_description = action.payload.user.profile_description
+            const profile_picture = action.payload.user.profile_picture
+            const followers_count = action.payload.user.followers_count
+            const followings_count = action.payload.user.followings_count
 
             state.id = id
             state.email = email
@@ -74,7 +72,7 @@ export const authSlice = createSlice({
             state.profile_description = profile_description
             state.profile_picture = profile_picture
             state.followers_count = followers_count
-            state.followings_count = followings_count   
+            state.followings_count = followings_count
         },
         AUTH_ERROR: () => {
             localStorage.removeItem("token")

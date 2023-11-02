@@ -13,13 +13,19 @@ class AuthController {
         AuthService.login(req,res)
     }
 
-    check(req: Request, res: Response) {
-        AuthService.check(req,res)
+    async check(req: Request, res: Response) {
+        try {
+            const id = parseInt(req.params.id)
+            const response = await AuthService.check(id)
+            return res.status(200).json(response)
+        } catch (error) {
+            return res.status(500).json({ error: error.message })
     }
 
     // logout(req: Request, res: Response) {
     //     AuthService.logout(req,res)
     // }
+}
 }
 
 export default new AuthController()

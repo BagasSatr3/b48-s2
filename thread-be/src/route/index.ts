@@ -42,7 +42,7 @@ router.delete("/user/:id",verifyToken, UserController.delete)
 // router.get("/auth", AuthController.find)
 router.post("/auth/register", AuthController.register)
 router.post("/auth/login", AuthController.login)
-router.get("/auth/check", verifyToken, AuthController.check)
+router.get("/auth/check/:id", verifyToken, AuthController.check)
 // router.delete("/auth/logout/:id", AuthController.logout)
 
 router.get("/replies",verifyToken, RepliesController.find)
@@ -52,8 +52,12 @@ router.post("/like", verifyToken, LikesController.create)
 router.delete("/like/:threadsId", verifyToken, LikesController.delete)
 
 router.get("/follows", verifyToken, FollowsController.find)
-router.post("/follow", verifyToken, FollowsController.create)
-router.delete("/follow/:followed_user_id", verifyToken, FollowsController.delete)
+// router.post("/follow", verifyToken, FollowsController.create)
+// router.delete("/follow/:followed_user_id", verifyToken, FollowsController.delete)
+
+router.post("/follow/:userId", FollowsController.followUser);
+router.delete("/follow/:userId", FollowsController.unfollowUser);
+
 
 router.get("/search", verifyToken, SearchController.search)
 

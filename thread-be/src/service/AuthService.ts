@@ -82,7 +82,7 @@ class AuthService {
 
             if (comparePass){
                 // console.log("Authentication", accessToken)
-                res.json({ token } );
+                res.json({user,token});
             } else {
                 return res.status(401).json({ error: 'Invalid email or password' });
             }
@@ -92,18 +92,20 @@ class AuthService {
         }
     }
 
-    async check(req: Request, res: Response) {
+    async check(reqBody?: any): Promise<any> {
         try {
-            const loginSession = res.locals.loginSession
             const user = await this.userRepository.findOne({
                 where:{
-                    id: loginSession.userId
+                    id: reqBody.id
                 }
             })
 
-            return res.status(200).json({user, message:"Token is valid"})
+            return {
+                message: "Successfully auth check!",
+                user: user
+            }
         } catch(err) {
-            return res.status(500).json("Something wrong in server")
+            throw new Error("Something wrong in server")
         }
     }
 }
