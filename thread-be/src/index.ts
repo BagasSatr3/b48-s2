@@ -11,7 +11,7 @@ dotenv.config()
 
 AppDataSource.initialize().then(async () => {
     const app = express()
-    const port = process.env.PORT as string
+    const port = process.env.PORT
     const cors = require('cors')
 
     // app.use(cookieParser())
