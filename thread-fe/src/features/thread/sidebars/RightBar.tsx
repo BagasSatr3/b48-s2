@@ -1,8 +1,8 @@
 // import { FollowCard } from "@/features/follow";
-// import { ProfileCard } from "@/features/profile";
+import { ProfileCard } from "@/features/profile";
 // import { API } from "@/libs/api";
 // import { RootState } from "@/stores/types/rootState";
-// import { Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 // import { useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
 
@@ -15,43 +15,43 @@
 //   isFollowing: boolean;
 // }
 
-// export function RightBar() {
-//   // const [currentUser, setCurrentUser] = useState<User>();
-//   // const [users, setUsers] = useState([]);
+export function RightBar() {
+//   const [currentUser, setCurrentUser] = useState<User>();
+//   const [users, setUsers] = useState([]);
 
-//   // const auth = useSelector((state: RootState) => state.auth);
-
-  
-
-//   // async function getUser() {
-//   //   try {
-//   //     console.log("auth", auth)
-//   //     const userResponse = await API.get(`/user/${auth.id}`);
-//   //     console.log("nanna", userResponse.data)
-
-//   //     setCurrentUser(userResponse.data);
-
-//   //     const userListResponse = await API.get("/user");
-//   //     setUsers(userListResponse.data);
-//   //   } catch (error) {
-//   //     console.log(error)
-//   //   }
-//   // }
+//   const auth = useSelector((state: RootState) => state.auth);
 
   
 
-//   // const handleFollowToggle = async () => {
-//   //   try {
-//   //     const userListResponse = await API.get("/user");
-//   //     setUsers(userListResponse.data);
-//   //   } catch (error) {
-//   //     console.log(error)
-//   //   }
-//   // };
+//   async function getUser() {
+//     try {
+//       console.log("auth", auth)
+//       const userResponse = await API.get(`/user/${auth.id}`);
+//       console.log("nanna", userResponse.data)
 
-//   // useEffect(() => {
-//   //   getUser();
-//   // }, []);
+//       setCurrentUser(userResponse.data);
+
+//       const userListResponse = await API.get("/user");
+//       setUsers(userListResponse.data);
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   }
+
+  
+
+//   const handleFollowToggle = async () => {
+//     try {
+//       const userListResponse = await API.get("/user");
+//       setUsers(userListResponse.data);
+//     } catch (error) {
+//       console.log(error)
+//     }
+//   };
+
+//   useEffect(() => {
+//     getUser();
+//   }, []);
 
 //   const [follows, setFollows] = useState<IFollow[]>([])
 //   const dispatch = useDispatch()
@@ -76,34 +76,34 @@
 //     }, [followState])
     
 
-//     // return (
-//     //     <>
-//     //     <Box p={3} w={''} >
-//     //     <ProfileCard/>
+    return (
+        <>
+        <Box p={3} w={''} >
+        <ProfileCard/>
         
-//     //     <br />
+        <br />
 
         
-//     //     <Box backgroundColor={'blackAlpha.400'} rounded={'lg'}>
-//     //         <Box p={3}>
-//     //         {currentUser ? (
-//     //           users.map((user) => (
-//     //             <FollowCard
-//     //               user={user}
-//     //               currentUser={currentUser}
-//     //               onFollowToggle={handleFollowToggle}
-//     //             />
-//     //           ))
-//     //         ) : (
-//     //           // Render a loading indicator or message
-//     //           <div>Loading...</div>
-//     //         )}
-//     //         </Box>
-//     //     </Box>
+        <Box backgroundColor={'blackAlpha.400'} rounded={'lg'}>
+            {/* <Box p={3}>
+            {currentUser ? (
+              users.map((user) => (
+                <FollowCard
+                  user={user}
+                  currentUser={currentUser}
+                  onFollowToggle={handleFollowToggle}
+                />
+              ))
+            ) : (
+              // Render a loading indicator or message
+              <div>Loading...</div>
+            )}
+            </Box> */}
+        </Box>
 
-//     //   </Box>
-//     //   </>
-//     // )
+      </Box>
+      </>
+    )
 
 //     return (
 //       <>
@@ -153,4 +153,4 @@
 //           </Box>
 //       </>
 //   )
-// }
+}
